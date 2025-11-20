@@ -85,9 +85,9 @@ mkdir -p  %{buildroot}/usr/local/jars/hcom
 mkdir -p %{buildroot}/usr/include/hcom/capi
 mkdir -p %{buildroot}/usr/local/bin
 
-cp %{_builddir}/%{package_name}/dist/hcom/lib/libhcom.so  %{buildroot}/usr/lib64/
-cp %{_builddir}/%{package_name}/dist/hcom/lib/libhcom.so.0  %{buildroot}/usr/lib64/
 cp %{_builddir}/%{package_name}/dist/hcom/lib/libhcom.so.0.0.1  %{buildroot}/usr/lib64/
+ln -s libhcom.so.0.0.1 %{buildroot}%{_libdir}/libhcom.so.0
+ln -s libhcom.so.0     %{buildroot}%{_libdir}/libhcom.so
 cp %{_builddir}/%{package_name}/dist/hcom/lib/libhcom_static.a  %{buildroot}/usr/lib64/
 cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/include/hcom/
 
