@@ -20,11 +20,11 @@
 %endif
 
 %if %{undefined rpm_version}
-    %define rpm_version 25.3.0
+    %define rpm_version 1.0.0
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release B017
+    %define rpm_release B018
 %endif
 
 %if %{undefined rpm_build_date}
@@ -50,7 +50,7 @@ buildArch     : aarch64 x86_64
 ExclusiveArch : aarch64
 
 BuildRequires: make gcc cmake libboundscheck rdma-core-devel umdk-urma-devel
-Requires: libboundscheck umdk-urma-lib rdma-core
+Requires: libboundscheck
 
 %description
 HCOM是一个适用于C/S架构应用程序的高性能通信库
@@ -60,6 +60,18 @@ Summary: Development header files and dynamic library for HCOM
 
 %description devel
 This package contains development header files and dynamic library for HCOM
+
+%package lib
+Summary: Dynamic library for HCOM
+
+%description lib
+This package contains dynamic library for HCOM
+
+%package static
+Summary: Static library for HCOM
+
+%description static
+This package contains static library for HCOM
 
 %package debuginfo
 Summary: Debuginfo for HCOM
@@ -117,6 +129,17 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
     %{_prefix}/local/jars/hcom/*.jar
 %endif
 
+%files lib
+%defattr(-,root,root)
+%{_prefix}/lib64/libhcom.so
+%if %{with java_compile}
+    %{_prefix}/local/jars/hcom/*.jar
+%endif
+
+%files static
+%defattr(-,root,root)
+%{_prefix}/lib64/libhcom_static.a
+
 %files debuginfo
 %defattr(-,root,root)
 %{_prefix}/lib64/libhcom.so.debug
@@ -124,5 +147,5 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %define __os_install_post %{nil}
 
 %changelog
-* Mon Nov 17 2025 Yan Zhihan <yanzhihan@huawei.com> - 25.3.0-B017
+* Thu Nov 20 2025 Yan Zhihan <yanzhihan@huawei.com> - 1.0.0-B018
 - Package init
