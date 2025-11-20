@@ -36,7 +36,6 @@
 %endif
 
 %global package_suffix ubs-comm
-%global debug_package %{nil}
 
 Name:           %{package_suffix}
 Version       : %{rpm_version}
@@ -73,11 +72,6 @@ Summary: Static library for HCOM
 %description static
 This package contains static library for HCOM
 
-%package debuginfo
-Summary: Debuginfo for HCOM
-
-%description debuginfo
-This package contains debug info of hcom.so
 %prep
 %setup -q -b 0 -c -n %{name}
 
@@ -92,8 +86,9 @@ mkdir -p %{buildroot}/usr/include/hcom/capi
 mkdir -p %{buildroot}/usr/local/bin
 
 cp %{_builddir}/%{package_name}/dist/hcom/lib/libhcom.so  %{buildroot}/usr/lib64/
+cp %{_builddir}/%{package_name}/dist/hcom/lib/libhcom.so.0  %{buildroot}/usr/lib64/
+cp %{_builddir}/%{package_name}/dist/hcom/lib/libhcom.so.0.0.1  %{buildroot}/usr/lib64/
 cp %{_builddir}/%{package_name}/dist/hcom/lib/libhcom_static.a  %{buildroot}/usr/lib64/
-cp %{_builddir}/%{package_name}/dist/hcom/lib/libhcom.so.debug  %{buildroot}/usr/lib64/
 cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/include/hcom/
 
 %if %{with java_compile}
@@ -106,14 +101,6 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 
 %if %{with_htracer_cli}
     cp -r %{_builddir}/%{package_name}/hcom/bin/htracer_cli  %{buildroot}/usr/local/bin/
-%endif
-
-%files
-%defattr(-,root,root)
-%{_prefix}/lib64/libhcom.so
-%{_prefix}/lib64/libhcom_static.a
-%if %{with java_compile}
-    %{_prefix}/local/jars/hcom/*.jar
 %endif
 
 %files devel
@@ -131,20 +118,8 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 
 %files lib
 %defattr(-,root,root)
-%{_prefix}/lib64/libhcom.so
-%if %{with java_compile}
-    %{_prefix}/local/jars/hcom/*.jar
-%endif
-
-%files static
-%defattr(-,root,root)
-%{_prefix}/lib64/libhcom_static.a
-
-%files debuginfo
-%defattr(-,root,root)
-%{_prefix}/lib64/libhcom.so.debug
-
-%define __os_install_post %{nil}
+%{_prefix}/lib64/libhcom.so.0
+%{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
 * Thu Nov 20 2025 Yan Zhihan <yanzhihan@huawei.com> - 1.0.0-B018
