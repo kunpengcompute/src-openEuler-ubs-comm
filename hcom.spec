@@ -16,7 +16,7 @@
 %global with_htracer_cli %{?_with_htracer_cli:%{_with_htracer_cli}}
 # 如果没有提供，则设置默认值
 %if "%{with_htracer_cli}" == ""
-    %global with_htracer_cli 0
+    %global with_htracer_cli 1
 %endif
 
 %if %{undefined rpm_version}
