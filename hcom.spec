@@ -16,7 +16,7 @@
 %global with_htracer_cli %{?_with_htracer_cli:%{_with_htracer_cli}}
 # 如果没有提供，则设置默认值
 %if "%{with_htracer_cli}" == ""
-    %global with_htracer_cli 0
+    %global with_htracer_cli 1
 %endif
 
 %if %{undefined rpm_version}
@@ -56,6 +56,7 @@ HCOM是一个适用于C/S架构应用程序的高性能通信库
 
 %package devel
 Summary: Development header files and dynamic library for HCOM
+Requires:       ubs-comm-lib = %{version}
 
 %description devel
 This package contains development header files and dynamic library for HCOM
@@ -65,12 +66,6 @@ Summary: Dynamic library for HCOM
 
 %description lib
 This package contains dynamic library for HCOM
-
-%package static
-Summary: Static library for HCOM
-
-%description static
-This package contains static library for HCOM
 
 %prep
 %setup -q -b 0 -c -n %{name}
@@ -96,11 +91,11 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %endif
 
 %if %{with_hcom_perf}
-    cp -r %{_builddir}/%{package_name}/hcom/hcom_perf  %{buildroot}/usr/local/bin/
+    cp -r %{_builddir}/%{package_name}/tools/perf_test/build/hcom_perf  %{buildroot}/usr/local/bin/
 %endif
 
 %if %{with_htracer_cli}
-    cp -r %{_builddir}/%{package_name}/hcom/bin/htracer_cli  %{buildroot}/usr/local/bin/
+    cp -r %{_builddir}/%{package_name}/dist/hcom_3rdparty/hcom_tracer/htracer_cli  %{buildroot}/usr/local/bin/
 %endif
 
 %files devel
