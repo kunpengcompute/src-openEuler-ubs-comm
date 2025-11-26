@@ -41,7 +41,7 @@ Name:           %{package_suffix}
 Version       : %{rpm_version}
 Release       : %{rpm_release}
 Summary:        HCOM
-License       : Proprietary
+License       : GPL-2.0-only
 Provides      : Huawei Technologies Co., Ltd
 Source0       : %{package_name}.tar.gz
 BuildRoot     : %{_buildirootdir}/%{name}_%{version}-build
