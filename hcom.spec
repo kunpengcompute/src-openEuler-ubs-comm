@@ -24,7 +24,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release B018
+    %define rpm_release B019
 %endif
 
 %if %{undefined rpm_build_date}
@@ -117,5 +117,8 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Thu Nov 20 2025 Yan Zhihan <yanzhihan@huawei.com> - 1.0.0-B019
+- Bugfix, update License
+
 * Thu Nov 20 2025 Yan Zhihan <yanzhihan@huawei.com> - 1.0.0-B018
 - Package init
