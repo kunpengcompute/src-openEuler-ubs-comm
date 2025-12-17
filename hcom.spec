@@ -24,7 +24,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release 1
+    %define rpm_release 2
 %endif
 
 %if %{undefined rpm_build_date}
@@ -117,6 +117,9 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Wed Dec 17 2025 Yan Zhihan <yanzhihan@huawei.com> - 1.0.0-2
+- Bugfix
+
 * Thu Nov 20 2025 Yan Zhihan <yanzhihan@huawei.com> - 1.0.0-1
 - Bugfix
 
