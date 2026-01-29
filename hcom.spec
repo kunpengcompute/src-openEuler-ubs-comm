@@ -24,7 +24,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release 5
+    %define rpm_release 6
 %endif
 
 %if %{undefined rpm_build_date}
@@ -117,6 +117,9 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Thu Jan 29 2026 Yan Zhihan <yanzhihan@huawei.com> - 1.0.0-6
+- Bugfix, rewrite bonding device choosing logic
+
 * Tue Jan 06 2026 Zhu Chenghao <zhuchenghao6@h-partners.com> - 1.0.0-5
 - Delete redundant logs and fix return.
 
