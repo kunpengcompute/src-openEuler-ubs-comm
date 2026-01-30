@@ -24,7 +24,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release 6
+    %define rpm_release 7
 %endif
 
 %if %{undefined rpm_build_date}
@@ -117,6 +117,9 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Fri Jan 30 2026 Yan Zhihan <yanzhihan@huawei.com> - 1.0.0-7
+- Bugfix, second entry of ub driver initialize
+
 * Thu Jan 29 2026 Yan Zhihan <yanzhihan@huawei.com> - 1.0.0-6
 - Bugfix, rewrite bonding device choosing logic
 
