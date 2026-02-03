@@ -13,6 +13,12 @@
     %global with_hcom_perf 0
 %endif
 
+%global with_multicast %{?_with_multicast:%{_with_multicast}}
+# 如果没有提供，则设置默认值
+%if "%{with_multicast}" == ""
+    %global with_multicast 1
+%endif
+
 %global with_htracer_cli %{?_with_htracer_cli:%{_with_htracer_cli}}
 # 如果没有提供，则设置默认值
 %if "%{with_htracer_cli}" == ""
@@ -24,7 +30,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release 7
+    %define rpm_release 8
 %endif
 
 %if %{undefined rpm_build_date}
@@ -71,7 +77,7 @@ This package contains dynamic library for HCOM
 %setup -q -b 0 -c -n %{name}
 
 %build
-cd %{_builddir}/%{name} && export HCOM_BUILD_RPM=off && export HCOM_BUILD_UB=on && export HCOM_BUILD_HTRACER=on && bash -x build.sh
+cd %{_builddir}/%{name} && export HCOM_BUILD_RPM=off && export HCOM_BUILD_UB=on && export HCOM_BUILD_HTRACER=on && export HCOM_BUILD_MULTICAST=on && bash -x build.sh
 
 %install
 rm -rf %{buildroot}
@@ -110,6 +116,9 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %if %{with java_compile}
     %{_prefix}/local/jars/hcom/*.jar
 %endif
+%if %{with_multicast}
+    %{_prefix}/include/hcom/multicast/*.h
+%endif
 
 %files lib
 %defattr(-,root,root)
@@ -117,6 +126,9 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Tue Feb 03 2026 Pan Hengzhi <panhengzhi@h-partners.com> - 1.0.0-8
+- Multicast support TLS
+
 * Fri Jan 30 2026 Yan Zhihan <yanzhihan@huawei.com> - 1.0.0-7
 - Bugfix, second entry of ub driver initialize
 
