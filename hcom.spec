@@ -30,7 +30,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release 8
+    %define rpm_release 9
 %endif
 
 %if %{undefined rpm_build_date}
@@ -126,6 +126,9 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Tue Feb 10 2026 Pan Hengzhi <panhengzhi@h-partners.com> - 1.0.0-9
+- Bugfix, hcom support read/write sgl, support import seg
+
 * Tue Feb 03 2026 Pan Hengzhi <panhengzhi@h-partners.com> - 1.0.0-8
 - Multicast support TLS
 
