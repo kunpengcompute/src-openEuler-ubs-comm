@@ -30,7 +30,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release 10
+    %define rpm_release 11
 %endif
 
 %if %{undefined rpm_build_date}
@@ -52,9 +52,13 @@ Provides      : Huawei Technologies Co., Ltd
 Source0       : %{package_name}.tar.gz
 BuildRoot     : %{_buildirootdir}/%{name}_%{version}-build
 buildArch     : aarch64 x86_64
-ExclusiveArch : aarch64
+ExclusiveArch : aarch64 x86_64
 
-BuildRequires: make gcc cmake libboundscheck rdma-core-devel umdk-urma-devel
+BuildRequires: make gcc cmake libboundscheck rdma-core-devel
+%ifarch aarch64
+BuildRequires: umdk-urma-devel
+%endif
+
 Requires: libboundscheck
 
 %description
@@ -126,6 +130,9 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Mon Mar 9 2026 Liu Lianguang <liulianguang@huawei.com> - 1.0.0-11
+- adapt to umdk-urma-devel in x86.
+
 * Thu Mar 5 2026 Zhu Chenghao <zhuchenghao6@h-partners.com> - 1.0.0-10
 - IPoverURMA + PrimaryEID.
 
