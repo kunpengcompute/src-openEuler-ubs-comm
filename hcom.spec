@@ -30,7 +30,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release 11
+    %define rpm_release 12
 %endif
 
 %if %{undefined rpm_build_date}
@@ -130,6 +130,9 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Tue Mar 10 2026 Liu Lianguang <liulianguang@huawei.com> - 1.0.0-12
+- hcom self_poll adapt importUrmaSeg.
+
 * Mon Mar 9 2026 Liu Lianguang <liulianguang@huawei.com> - 1.0.0-11
 - adapt to umdk-urma-devel in x86.
 
