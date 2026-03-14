@@ -30,7 +30,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release 13
+    %define rpm_release 14
 %endif
 
 %if %{undefined rpm_build_date}
@@ -130,6 +130,9 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Sat Mar 14 2026 Liu Lianguang <liulianguang@huawei.com> - 1.0.0-14
+- Bugfix.
+
 * Thu Mar 12 2026 Zhu Chenghao <zhuchenghao6@h-partners.com> - 1.0.0-13
 - verify.
 
