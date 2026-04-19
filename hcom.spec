@@ -30,7 +30,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release 17
+    %define rpm_release 18
 %endif
 
 %if %{undefined rpm_build_date}
@@ -130,6 +130,9 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Sun Apr 19 2026 Liu Lianguang <liulianguang@huawei.com> - 1.0.0-18
+- Adapt clos net.
+
 * Wed Apr 15 2026 Pan Hengzhi <panhengzhi@h-partners.com> - 1.0.0-17
 - Bugfix.
 
