@@ -30,7 +30,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release 20
+    %define rpm_release 21
 %endif
 
 %if %{undefined rpm_build_date}
@@ -56,7 +56,7 @@ ExclusiveArch : aarch64 x86_64
 
 BuildRequires: make gcc cmake libboundscheck rdma-core-devel
 %ifarch aarch64
-BuildRequires: umdk-urma-devel >= 25.12.0-B071
+BuildRequires: umdk-urma-devel
 %endif
 
 Requires: libboundscheck
@@ -130,6 +130,9 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Wed Apr 29 2026 Pan Hengzhi <panhengzhi@h-partners.com> - 1.0.0-21
+- for update, similar to 1.0.0-17.
+
 * Wed Apr 29 2026 Liu Lianguang <liulianguang@huawei.com> - 1.0.0-20
 - Add umdk version to Spec & Bugfix.
 
