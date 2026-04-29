@@ -13,6 +13,12 @@
     %global with_hcom_perf 0
 %endif
 
+%global with_multicast %{?_with_multicast:%{_with_multicast}}
+# 如果没有提供，则设置默认值
+%if "%{with_multicast}" == ""
+    %global with_multicast 1
+%endif
+
 %global with_htracer_cli %{?_with_htracer_cli:%{_with_htracer_cli}}
 # 如果没有提供，则设置默认值
 %if "%{with_htracer_cli}" == ""
@@ -20,11 +26,11 @@
 %endif
 
 %if %{undefined rpm_version}
-    %define rpm_version 1.0.0
+    %define rpm_version 1.0.1
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release B019
+    %define rpm_release 1
 %endif
 
 %if %{undefined rpm_build_date}
@@ -46,9 +52,13 @@ Provides      : Huawei Technologies Co., Ltd
 Source0       : %{package_name}.tar.gz
 BuildRoot     : %{_buildirootdir}/%{name}_%{version}-build
 buildArch     : aarch64 x86_64
-ExclusiveArch : aarch64
+ExclusiveArch : aarch64 x86_64
 
-BuildRequires: make gcc cmake libboundscheck rdma-core-devel umdk-urma-devel
+BuildRequires: make gcc cmake libboundscheck rdma-core-devel
+%ifarch aarch64
+BuildRequires: umdk-urma-devel
+%endif
+
 Requires: libboundscheck
 
 %description
@@ -71,7 +81,7 @@ This package contains dynamic library for HCOM
 %setup -q -b 0 -c -n %{name}
 
 %build
-cd %{_builddir}/%{name} && export HCOM_BUILD_RPM=off && export HCOM_BUILD_UB=on && export HCOM_BUILD_HTRACER=on && bash -x build.sh
+cd %{_builddir}/%{name} && export HCOM_BUILD_RPM=off && export HCOM_BUILD_UB=on && export HCOM_BUILD_HTRACER=on && export HCOM_BUILD_MULTICAST=on && bash -x build.sh
 
 %install
 rm -rf %{buildroot}
@@ -110,6 +120,9 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %if %{with java_compile}
     %{_prefix}/local/jars/hcom/*.jar
 %endif
+%if %{with_multicast}
+    %{_prefix}/include/hcom/multicast/*.h
+%endif
 
 %files lib
 %defattr(-,root,root)
@@ -117,8 +130,5 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
-* Thu Nov 20 2025 Yan Zhihan <yanzhihan@huawei.com> - 1.0.0-B019
-- Bugfix, update License
-
-* Thu Nov 20 2025 Yan Zhihan <yanzhihan@huawei.com> - 1.0.0-B018
+* Wed Apr 29 2026 Liu Lianguang <liulianguang@huawei.com> - 1.0.1-1
 - Package init
