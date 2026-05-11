@@ -30,7 +30,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release 1
+    %define rpm_release 2
 %endif
 
 %if %{undefined rpm_build_date}
@@ -130,5 +130,8 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Mon May 11 2026 Pan Hengzhi <panhengzhi@h-partners.com> - 1.0.1-2
+- add multicast + hlc.
+
 * Wed Apr 22 2026 Pan Hengzhi <panhengzhi@h-partners.com> - 1.0.1-1
 - Package init
