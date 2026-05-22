@@ -30,7 +30,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release 2
+    %define rpm_release 4
 %endif
 
 %if %{undefined rpm_build_date}
@@ -49,7 +49,7 @@ Release       : %{rpm_release}
 Summary:        HCOM
 License       : GPL-2.0-only
 Provides      : Huawei Technologies Co., Ltd
-Source0       : %{package_name}.tar.gz
+Source0       : %{package_name}-%{version}.tar.gz
 BuildRoot     : %{_buildirootdir}/%{name}_%{version}-build
 buildArch     : aarch64 x86_64
 ExclusiveArch : aarch64 x86_64
@@ -60,6 +60,7 @@ BuildRequires: umdk-urma-devel
 %endif
 
 Requires: libboundscheck
+Requires: %{name}-lib = %{version}
 
 %description
 HCOM是一个适用于C/S架构应用程序的高性能通信库
@@ -78,10 +79,10 @@ Summary: Dynamic library for HCOM
 This package contains dynamic library for HCOM
 
 %prep
-%setup -q -b 0 -c -n %{name}
+%setup -q -b 0 -c -n %{name}-%{version}
 
 %build
-cd %{_builddir}/%{name} && export HCOM_BUILD_RPM=off && export HCOM_BUILD_UB=on && export HCOM_BUILD_HTRACER=on && export HCOM_BUILD_MULTICAST=on && bash -x build.sh
+cd %{_builddir}/%{name}-%{version} && export HCOM_BUILD_RPM=off && export HCOM_BUILD_UB=on && export HCOM_BUILD_HTRACER=on && export HCOM_BUILD_MULTICAST=on && bash -x build.sh
 
 %install
 rm -rf %{buildroot}
@@ -90,23 +91,28 @@ mkdir -p  %{buildroot}/usr/local/jars/hcom
 mkdir -p %{buildroot}/usr/include/hcom/capi
 mkdir -p %{buildroot}/usr/local/bin
 
-cp %{_builddir}/%{package_name}/dist/hcom/lib/libhcom.so.0.0.1  %{buildroot}/usr/lib64/
+cp %{_builddir}/%{package_name}-%{version}/dist/hcom/lib/libhcom.so.0.0.1  %{buildroot}/usr/lib64/
 ln -s libhcom.so.0.0.1 %{buildroot}%{_libdir}/libhcom.so.0
 ln -s libhcom.so.0     %{buildroot}%{_libdir}/libhcom.so
-cp %{_builddir}/%{package_name}/dist/hcom/lib/libhcom_static.a  %{buildroot}/usr/lib64/
-cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/include/hcom/
+cp %{_builddir}/%{package_name}-%{version}/dist/hcom/lib/libhcom_static.a  %{buildroot}/usr/lib64/
+cp -r %{_builddir}/%{package_name}-%{version}/dist/hcom/include/hcom/*  %{buildroot}/usr/include/hcom/
 
 %if %{with java_compile}
-    cp %{_builddir}/%{package_name}/hcom/jars/*  %{buildroot}/usr/local/jars/hcom/
+    cp %{_builddir}/%{package_name}-%{version}/hcom/jars/*  %{buildroot}/usr/local/jars/hcom/
 %endif
 
 %if %{with_hcom_perf}
-    cp -r %{_builddir}/%{package_name}/tools/perf_test/build/hcom_perf  %{buildroot}/usr/local/bin/
+    cp -r %{_builddir}/%{package_name}-%{version}/tools/perf_test/build/hcom_perf  %{buildroot}/usr/local/bin/
 %endif
 
 %if %{with_htracer_cli}
-    cp -r %{_builddir}/%{package_name}/dist/hcom_3rdparty/hcom_tracer/htracer_cli  %{buildroot}/usr/local/bin/
+    cp -r %{_builddir}/%{package_name}-%{version}/dist/hcom_3rdparty/hcom_tracer/htracer_cli  %{buildroot}/usr/local/bin/
 %endif
+
+# 主包仅依赖 lib 子包
+%files
+%defattr(-,root,root)
+%doc
 
 %files devel
 %defattr(-,root,root)
@@ -130,6 +136,12 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Thu May 21 2026 Pan Hengzhi <panhengzhi@h-partners.com> - 1.0.1-4
+- update spec.
+
+* Tue May 19 2026 Pan Hengzhi <panhengzhi@h-partners.com> - 1.0.1-3
+- update for urma, bugfix.
+
 * Mon May 11 2026 Pan Hengzhi <panhengzhi@h-partners.com> - 1.0.1-2
 - add multicast + hlc.
 
