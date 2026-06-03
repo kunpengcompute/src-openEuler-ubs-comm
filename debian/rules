@@ -21,46 +21,41 @@ override_dh_auto_install:
 	dh_auto_install
 	
 	# spec%install
-	# 
 	mkdir -p debian/tmp/usr/lib64/
 	mkdir -p debian/tmp/usr/local/jars/hcom
 	mkdir -p debian/tmp/usr/include/hcom/capi
 	mkdir -p debian/tmp/usr/local/bin
 	
-	# 
 	cp -a dist/hcom/lib/libhcom.so.0.0.1 debian/tmp/usr/lib64/
 	
-	# 
 	cd debian/tmp/usr/lib64 && \
 		ln -sf libhcom.so.0.0.1 libhcom.so.0 && \
 		ln -sf libhcom.so.0 libhcom.so
 	
-	# 
 	cp -a dist/hcom/lib/libhcom_static.a debian/tmp/usr/lib64/
 	
-	# 
 	cp -r dist/hcom/include/hcom/* debian/tmp/usr/include/hcom/
 	
-	# java_compilespec%if %{with java_compile}
-	if [ -d hcom/jars ]; then
-		cp hcom/jars/* debian/tmp/usr/local/jars/hcom/
+	# java_compile
+	if [ -d hcom/jars ]; then \
+		cp hcom/jars/* debian/tmp/usr/local/jars/hcom/; \
 	fi
 	
-	# hcom_perfspec%if %{with_hcom_perf}
-	if [ -f tools/perf_test/build/hcom_perf ]; then
-		cp -r tools/perf_test/build/hcom_perf debian/tmp/usr/local/bin/
+	# hcom_perf
+	if [ -f tools/perf_test/build/hcom_perf ]; then \
+		cp -r tools/perf_test/build/hcom_perf debian/tmp/usr/local/bin/; \
 	fi
 	
-	# htracer_clispec%if %{with_htracer_cli}
-	if [ -f dist/hcom_3rdparty/hcom_tracer/htracer_cli ]; then
-		cp -r dist/hcom_3rdparty/hcom_tracer/htracer_cli debian/tmp/usr/local/bin/
+	# htracer_cli
+	if [ -f dist/hcom_3rdparty/hcom_tracer/htracer_cli ]; then \
+		cp -r dist/hcom_3rdparty/hcom_tracer/htracer_cli debian/tmp/usr/local/bin/; \
 	fi
 
 override_dh_shlibdeps:
 	dh_shlibdeps --dpkg-shlibdeps-params=--ignore-missing-info
 
 override_dh_strip:
-	dh_strip -pubs-comm-lib --dbg-package=ubs-comm-dbg
+	dh_strip -pubs-comm-lib
 
 override_dh_compress:
 	dh_compress -X.h -X.a
