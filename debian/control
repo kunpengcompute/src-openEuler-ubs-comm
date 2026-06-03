@@ -3,7 +3,7 @@ Section: libs
 Priority: optional
 Maintainer: Huawei Technologies Co., Ltd <packaging@huawei.com>
 Build-Depends: debhelper (>= 9), make, gcc, cmake,
-               libboundscheck, rdma-core, umdk-urma-dev
+               libboundscheck, rdma-core, umdk-urma-dev, libibverbs-dev
 Standards-Version: 4.5.0
 Homepage: https://github.com/huawei/ubs-comm
 
