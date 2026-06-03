@@ -1,0 +1,12 @@
+ubs-comm (1.0.0-5) unstable; urgency=medium
+  * Delete redundant logs and fix return.
+ -- Zhu Chenghao <zhuchenghao6@h-partners.com>  Tue, 06 Jan 2026 00:00:00 +0000
+ubs-comm (1.0.0-3) unstable; urgency=medium
+  * Bugfix
+ -- Yan Zhihan <yanzhihan@huawei.com>  Fri, 26 Dec 2025 00:00:00 +0000
+ubs-comm (1.0.0-2) unstable; urgency=medium
+  * Bugfix
+ -- Yan Zhihan <yanzhihan@huawei.com>  Wed, 17 Dec 2025 00:00:00 +0000
+ubs-comm (1.0.0-1) unstable; urgency=medium
+  * Package init
+ -- Yan Zhihan <yanzhihan@huawei.com>  Thu, 20 Nov 2025 00:00:00 +0000

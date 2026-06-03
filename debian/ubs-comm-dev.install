@@ -1,0 +1,3 @@
+usr/lib64/libhcom_static.a
+usr/include/hcom/*.h
+usr/include/hcom/capi/*.h
