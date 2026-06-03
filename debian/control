@@ -1,0 +1,28 @@
+Source: ubs-comm
+Section: libs
+Priority:Maintainer: Huawei Technologies Co., Ltd <packaging@huawei.com>
+Build-Depends: debhelper (>= 9), make, gcc, cmake,
+               libboundscheck-dev, rdma-core-dev, umdk-urma-dev
+Standards-Version: 4.5.0
+Homepage: https://github.com/huawei/ubs-comm
+Package: ubs-comm-lib
+Architecture: arm64
+Multi-Arch: same
+Depends: ${shlibs:Depends}, ${misc:Depends}, libboundscheck
+Description: HCOM - High-performance communication library
+ HCOM is a high-performance communication library for C/S architecture
+ applications.
+ .
+ This package contains the shared library.
+Package: ubs-comm-dev
+Architecture: arm64
+Multi-Arch: same
+Section: libdevel
+Depends: ubs-comm-lib (= ${binary:Version}), ${misc:Depends},
+         libboundscheck-dev
+Description: HCOM development files
+ This package contains the development files (headers, static library)
+ for HCOM library.
+ .
+ Install this package if you wish to develop applications that use
+ HCOM library.
