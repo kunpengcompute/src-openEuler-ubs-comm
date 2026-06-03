@@ -28,7 +28,7 @@ override_dh_auto_install:
 	
 	cp -a dist/hcom/lib/libhcom.so.0.0.1 debian/tmp/usr/lib/aarch64-linux-gnu/
 	
-	cd debian/tmp/usr/lib64 && \
+	cd debian/tmp/usr/lib/aarch64-linux-gnu/ && \
 		ln -sf libhcom.so.0.0.1 libhcom.so.0 && \
 		ln -sf libhcom.so.0 libhcom.so
 	
