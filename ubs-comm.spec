@@ -30,7 +30,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release 5
+    %define rpm_release 6
 %endif
 
 %if %{undefined rpm_build_date}
@@ -136,6 +136,9 @@ cp -r %{_builddir}/%{package_name}-%{version}/dist/hcom/include/hcom/*  %{buildr
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Tue Jun 02 2026 Pan Hengzhi <panhengzhi@h-partners.com> - 1.0.1-6
+- add call/reply with hlc.
+
 * Tue May 26 2026 Pan Hengzhi <panhengzhi@h-partners.com> - 1.0.1-5
 - bugfix match bonding devices.
 
