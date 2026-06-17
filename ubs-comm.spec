@@ -30,7 +30,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release 7
+    %define rpm_release 8
 %endif
 
 %if %{undefined rpm_build_date}
@@ -136,6 +136,9 @@ cp -r %{_builddir}/%{package_name}-%{version}/dist/hcom/include/hcom/*  %{buildr
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Tue Jun 16 2026 Zhu Chenghao <zhuchenghao6@h-partners.com> - 1.0.1-8
+- update for 630
+
 * Mon Jun 15 2026 Zhu Chenghao <zhuchenghao6@h-partners.com> - 1.0.1-7
 - change to master
 
