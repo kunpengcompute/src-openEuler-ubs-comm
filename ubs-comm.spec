@@ -30,7 +30,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release 9
+    %define rpm_release 10
 %endif
 
 %if %{undefined rpm_build_date}
@@ -136,6 +136,9 @@ cp -r %{_builddir}/%{package_name}-%{version}/dist/hcom/include/hcom/*  %{buildr
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Thu Jun 25 2026 Zhu Chenghao <zhuchenghao6@h-partners.com> - 1.0.1-10
+- update for b027
+
 * Tue Jun 16 2026 Zhu Chenghao <zhuchenghao6@h-partners.com> - 1.0.1-9
 - delete getRouteList
 
