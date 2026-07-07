@@ -30,7 +30,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release 4
+    %define rpm_release 10
 %endif
 
 %if %{undefined rpm_build_date}
@@ -136,6 +136,24 @@ cp -r %{_builddir}/%{package_name}-%{version}/dist/hcom/include/hcom/*  %{buildr
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Thu Jun 25 2026 Zhu Chenghao <zhuchenghao6@h-partners.com> - 1.0.1-10
+- update for b027
+
+* Tue Jun 16 2026 Zhu Chenghao <zhuchenghao6@h-partners.com> - 1.0.1-9
+- delete getRouteList
+
+* Tue Jun 16 2026 Zhu Chenghao <zhuchenghao6@h-partners.com> - 1.0.1-8
+- update for 630
+
+* Mon Jun 15 2026 Zhu Chenghao <zhuchenghao6@h-partners.com> - 1.0.1-7
+- change to master
+
+* Tue Jun 02 2026 Pan Hengzhi <panhengzhi@h-partners.com> - 1.0.1-6
+- add call/reply with hlc.
+
+* Tue May 26 2026 Pan Hengzhi <panhengzhi@h-partners.com> - 1.0.1-5
+- bugfix match bonding devices.
+
 * Thu May 21 2026 Pan Hengzhi <panhengzhi@h-partners.com> - 1.0.1-4
 - update spec.
 
