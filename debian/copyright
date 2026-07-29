@@ -1,0 +1,66 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: ubs-comm
+Upstream-Contact: Yan Zhihan <yanzhihan@huawei.com>
+Source: https://atomgit.com/openeuler/ubs-comm
+
+Files: *
+Copyright: 2024 Huawei Technologies Co., Ltd
+License: MulanPSL-2.0
+
+License: MulanPSL-2.0
+木兰宽松许可证, 第2版
+ .
+ 2020年1月4日
+ .
+ http://license.coscl.org.cn/MulanPSL2
+ .
+ 您对“软件”的复制、使用、修改及分发受木兰宽松许可证，第2版（“本许可证”）的如下条款的约束：
+ .
+ 0. 定义
+ .
+ “软件” 是指由“贡献” 构成的许可在“本许可证” 下的及相关文档的集合。
+ .
+ “贡献” 是指受“本许可证”约束的任何原创性软件作品及其修订或补充。
+ .
+ “许可人” 是指提供“软件”的自然人或法人实体。
+ .
+ “您” 是指行使通过本许可证授予的权利的自然人或法人实体。
+ .
+ 1. 授予权利
+ .
+ 受著作权法及相关国际公约约束，“贡献者”就“软件”授予您以下权利：
+ .
+ a) 授予您免费的、非独占的、不可撤销的、worldwide 的复制权、使用权、修改权、翻译权、汇编权、发行权、信息网络传播权、以及改编权等著作权权利。
+ .
+ b) 在涉及专利时，授予您免费的、非独占的、不可撤销的、worldwide 的专利实施权。
+ .
+ 您可行使上述权利，但须遵守下述限制和条件。
+ .
+ 2. 限制和条件
+ .
+ a) 您应在“软件”的每一副本上，包含本许可证及著作权声明。
+ .
+ b) 您不得违背被许可人的意愿，移除或修改“软件”中的著作权声明。
+ .
+ c) 如果您修改了“软件”，您应在修改后的“软件”中，提供一份显著的声明，说明您修改了“软件”。
+ .
+ d) 在满足上述限制和条件的前提下，您可将“软件”用于商业目的。
+ .
+ 3. 违约与终止
+ .
+ 如果您未能遵守本许可证，您的权利将自动终止。在权利终止后，您应停止复制、使用、修改、分发“软件”。
+ .
+ 4. 免责
+ .
+ “软件”以“AS IS”提供，不提供任何明示或暗示的保证。许可人不对“软件”提供任何形式的担保，包括但不限于对适销性、特定用途适用性和不侵权的担保。
+ .
+ 5. 责任限制
+ .
+ 在任何情况下，许可人不对您因使用“软件”而产生的任何直接、间接、附带、特殊或后果性损害承担责任。
+ .
+ 6. 语言
+ .
+ “本许可证”以中文文本为准，英文文本仅供参考。
+ .
+ The complete text of the Mulan Permissive Software License, Version 2 can be found
+ at <https://license.coscl.org.cn/MulanPSL2>.
