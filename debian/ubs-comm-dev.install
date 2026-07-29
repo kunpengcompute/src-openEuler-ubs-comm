@@ -1,3 +1,5 @@
+usr/lib/aarch64-linux-gnu/libhcom.so
 usr/lib/aarch64-linux-gnu/libhcom_static.a
 usr/include/hcom/*.h
 usr/include/hcom/capi/*.h
+usr/include/hcom/multicast/*.h
