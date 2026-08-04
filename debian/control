@@ -3,7 +3,7 @@ Section: libs
 Priority: optional
 Maintainer: "Huawei Technologies Co., Ltd" <fanzhaonan1@huawei.com>
 Rules-Requires-Root: no
-Build-Depends: debhelper-compat (= 10), make, gcc, cmake,
+Build-Depends: debhelper-compat (= 10), make, gcc, cmake, dos2unix,
                libboundscheck, rdma-core, umdk-urma-dev, libibverbs-dev
 Standards-Version: 4.5.0
 Homepage: https://github.com/huawei/ubs-comm
