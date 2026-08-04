@@ -1,0 +1,17 @@
+Description: Fix missing <cstdint> include for uint16_t in multicast_utils.h
+ On Ubuntu 24.04 with GCC 13, uint16_t is no longer transitively included
+ through <string>. Add explicit <cstdint> include to fix the build error:
+   error: 'uint16_t' has not been declared
+Author: Zhu Chenghao <zhuchenghao6@h-partners.com>
+
+--- a/src/hcom/multicast/utils/multicast_utils.h
++++ b/src/hcom/multicast/utils/multicast_utils.h
+@@ -4,6 +4,7 @@
+ #ifndef HCOM_MULTICAST_UTILS_H
+ #define HCOM_MULTICAST_UTILS_H
+ 
+ #include <string>
++#include <cstdint>
+ 
+ namespace ock {
+ namespace hcom {
