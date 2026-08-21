@@ -6,8 +6,7 @@ Author: Zhu Chenghao <zhuchenghao6@h-partners.com>
 
 --- a/src/hcom/multicast/utils/multicast_utils.h
 +++ b/src/hcom/multicast/utils/multicast_utils.h
-@@ -4,6 +4,7 @@
- #ifndef HCOM_MULTICAST_UTILS_H
+@@ -5,6 +5,7 @@
  #define HCOM_MULTICAST_UTILS_H
  
  #include <string>
