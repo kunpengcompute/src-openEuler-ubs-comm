@@ -14,9 +14,9 @@ override_dh_auto_configure:
 	# Convert line endings to LF before patching to avoid CRLF conflicts
 	@find . -type f \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp' \
 		-o -name '*.cmake' -o -name 'CMakeLists.txt' -o -name '*.sh' -o -name '*.java' \) \
-		-not -path './debian/*' -print0 | xargs -0 -r dos2unix --quiet 2>/dev/null || true
+		-not -path './debian/*' -print0 | xargs -0 -r sed -i 's/\r$$//'
 	# Also normalize patch files to LF
-	@find debian/patches -type f -name '*.patch' -print0 | xargs -0 -r dos2unix --quiet 2>/dev/null || true
+	@find debian/patches -type f -name '*.patch' -print0 | xargs -0 -r sed -i 's/\r$$//'
 
 	# Apply patches from debian/patches/series
 	@if [ -f debian/patches/series ]; then \
