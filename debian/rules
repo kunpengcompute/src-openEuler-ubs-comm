@@ -10,26 +10,6 @@ export HCOM_BUILD_MULTICAST=on
 %:
 	dh $@
 
-override_dh_auto_configure:
-	# Convert line endings to LF before patching to avoid CRLF conflicts
-	@find . -type f \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp' \
-		-o -name '*.cmake' -o -name 'CMakeLists.txt' -o -name '*.sh' -o -name '*.java' \) \
-		-not -path './debian/*' -print0 | xargs -0 -r sed -i 's/\r$$//'
-	# Also normalize patch files to LF
-	@find debian/patches -type f -name '*.patch' -print0 | xargs -0 -r sed -i 's/\r$$//'
-
-	# Apply patches from debian/patches/series
-	@if [ -f debian/patches/series ]; then \
-		for p in $$(cat debian/patches/series); do \
-			if patch -p1 --dry-run --forward < debian/patches/$$p >/dev/null 2>&1; then \
-				echo "Applying patch: $$p"; \
-				patch -p1 --forward < debian/patches/$$p; \
-			else \
-				echo "Patch already applied or cannot apply: $$p"; \
-			fi; \
-		done; \
-	fi
-
 override_dh_auto_build:
 	# spec%build
 	bash build.sh
