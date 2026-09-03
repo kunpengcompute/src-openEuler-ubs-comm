@@ -1,0 +1,42 @@
+/*
+ * Copyright (c) Huawei Technologies Co., Ltd. 2025. All rights reserved.
+ 
+ * ubs-hcom is licensed under the Mulan PSL v2.
+ * You can use this software according to the terms and conditions of the Mulan PSL v2.
+ * You may obtain a copy of Mulan PSL v2 at:
+ *      http://license.coscl.org.cn/MulanPSL2
+ * THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
+ * See the Mulan PSL v2 for more details.
+ */
+#ifndef HCOM_TPSA_API_WRAPPER_H
+#define HCOM_TPSA_API_WRAPPER_H
+#ifdef UB_BUILD_ENABLED
+
+#include "tpsa_api_dl.h"
+
+namespace ock {
+namespace hcom {
+class HcomTpsa {
+public:
+    static inline int UvsGetPathSet(const uvs_eid_t *src_bonding_eid, const uvs_eid_t *dst_bonding_eid,
+                                    uvs_tp_type_t tp_type, bool multi_path, uvs_path_set_t *uvs_path_set)
+    {
+        return TpsaAPI::hcomInnerUvsGetPathSet(src_bonding_eid, dst_bonding_eid, tp_type, multi_path, uvs_path_set);
+    }
+
+    static inline bool IsLoaded()
+    {
+        return TpsaAPI::IsLoaded();
+    }
+
+    static inline int Load()
+    {
+        return TpsaAPI::LoadTpsaAPI();
+    }
+};
+} // namespace hcom
+} // namespace ock
+
+#endif
+#endif // HCOM_TPSA_API_WRAPPER_H
