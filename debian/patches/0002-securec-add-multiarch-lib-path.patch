@@ -1,0 +1,25 @@
+Description: Add multiarch library path for libboundscheck lookup
+ On Debian/Ubuntu multiarch systems, libboundscheck.so is installed under
+ /usr/lib/<triplet> (e.g. /usr/lib/aarch64-linux-gnu) instead of /usr/lib64.
+ Add CMAKE_LIBRARY_ARCHITECTURE to the find_library search paths, and fix
+ the missing newline at EOF.
+Author: Zhu Chenghao <zhuchenghao6@h-partners.com>
+
+--- a/src/hcom/3rdparty/securec/CMakeLists.txt
++++ b/src/hcom/3rdparty/securec/CMakeLists.txt
+@@ -11,7 +11,7 @@ find_path(LIBBOUNDCHECK_INCLUDE_DIR
+
+ find_library(LIBBOUNDCHECK_SHARED_LIBRARY
+         NAMES libboundscheck.so boundscheck
+-        PATHS /usr/lib64 /usr/lib
++        PATHS /usr/lib64 /usr/lib /usr/lib/${CMAKE_LIBRARY_ARCHITECTURE}
+         NO_DEFAULT_PATH
+ )
+
+@@ -82,4 +82,4 @@ target_include_directories(hcom_static_obj PRIVATE ${LIBBOUNDCHECK_INCLUDE_DIR})
+
+ # 链接共享库
+ target_link_libraries(hcom ${LIBBOUNDCHECK_SHARED_LIBRARY})
+-target_link_libraries(hcom_static_obj ${LIBBOUNDCHECK_SHARED_LIBRARY})
+\ No newline at end of file
++target_link_libraries(hcom_static_obj ${LIBBOUNDCHECK_SHARED_LIBRARY})
