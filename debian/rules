@@ -17,9 +17,8 @@ override_dh_auto_build:
 override_dh_auto_install:
 	# spec%install
 	mkdir -p debian/tmp/usr/lib/aarch64-linux-gnu/
-	mkdir -p debian/tmp/usr/local/jars/hcom
 	mkdir -p debian/tmp/usr/include/hcom/capi
-	mkdir -p debian/tmp/usr/local/bin
+	mkdir -p debian/tmp/usr/bin
 	
 	cp -a dist/hcom/lib/libhcom.so.0.0.1 debian/tmp/usr/lib/aarch64-linux-gnu/
 
@@ -30,20 +29,10 @@ override_dh_auto_install:
 	cp -a dist/hcom/lib/libhcom_static.a debian/tmp/usr/lib/aarch64-linux-gnu/
 	
 	cp -r dist/hcom/include/hcom/* debian/tmp/usr/include/hcom/
-	
-	# java_compile
-	if [ -d hcom/jars ]; then \
-		cp hcom/jars/* debian/tmp/usr/local/jars/hcom/; \
-	fi
-	
-	# hcom_perf
-	if [ -f tools/perf_test/build/hcom_perf ]; then \
-		cp -r tools/perf_test/build/hcom_perf debian/tmp/usr/local/bin/; \
-	fi
-	
+
 	# htracer_cli
 	if [ -f dist/hcom_3rdparty/hcom_tracer/htracer_cli ]; then \
-		cp -r dist/hcom_3rdparty/hcom_tracer/htracer_cli debian/tmp/usr/local/bin/; \
+		cp -r dist/hcom_3rdparty/hcom_tracer/htracer_cli debian/tmp/usr/bin/; \
 	fi
 
 override_dh_shlibdeps:
