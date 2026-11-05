@@ -1,3 +1,10 @@
+ubs-comm (1.0.0-6) UNRELEASED; urgency=medium
+  * Add multi-arch lib path support for libboundscheck.
+  * Install htracer_cli to standard /usr/bin path.
+  * Remove unused Java jar and performance test tool installation.
+  * Update build dependencies, homepage link and Standards-Version.
+ -- Zhu Chenghao <zhuchenghao6@h-partners.com>  Thu, 05 Nov 2026 00:00:00 +0000
+
 ubs-comm (1.0.0-5) unstable; urgency=medium
   * Delete redundant logs and fix return.
  -- Zhu Chenghao <zhuchenghao6@h-partners.com>  Tue, 06 Jan 2026 00:00:00 +0000
