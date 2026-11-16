@@ -48,7 +48,7 @@ Version       : %{rpm_version}
 Release       : %{rpm_release}%{?dist}
 Summary:        HCOM
 License       : GPL-2.0-only
-Source0       : %{package_name}.tar.gz
+Source0       : %{package_name}-%{version}.tar.gz
 BuildRoot     : %{_buildirootdir}/%{name}_%{version}-build
 ExclusiveArch : aarch64
 
