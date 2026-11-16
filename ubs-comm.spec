@@ -30,7 +30,7 @@
 %endif
 
 %if %{undefined rpm_release}
-    %define rpm_release 21
+    %define rpm_release 32
 %endif
 
 %if %{undefined rpm_build_date}
@@ -131,6 +131,10 @@ cp -r %{_builddir}/%{package_name}/dist/hcom/include/hcom/*  %{buildroot}/usr/in
 %{_prefix}/lib64/libhcom.so.0.0.1
 
 %changelog
+* Fri Sep 25 2026 Zhu Chenghao <zhuchenghao6@h-partners.com> - 1.0.0-32
+- [Type] fix
+- [DESC] fix umra imm data
+
 * Wed Apr 29 2026 Pan Hengzhi <panhengzhi@h-partners.com> - 1.0.0-21
 - [Type] sync
 - [DESC] synchronize version to opencloudos repository
